@@ -24,8 +24,20 @@ with st.sidebar.expander("🔍 업종 필터링", expanded=True):
     filtered_df = df[df['업종'].isin(selected_category)] if selected_category else df.iloc[0:0]
 
 # --- 지도 출력 ---
-m = create_map(filtered_df)
-st_folium(m, width=800, height=600)
+if 'map_center' not in st.session_state:
+    st.session_state.map_center = None
+if 'map_zoom' not in st.session_state:
+    st.session_state.map_zoom = None
+
+m = create_map(filtered_df, center=st.session_state.map_center, zoom=st.session_state.map_zoom)
+map_data = st_folium(m, width=800, height=600)
+
+# 사용자가 지도를 이동/확대/축소하면 그 상태를 저장
+if map_data:
+    if map_data.get('center'):
+        st.session_state.map_center = map_data['center']
+    if map_data.get('zoom'):
+        st.session_state.map_zoom = map_data['zoom']
 
 # --- AI 추천 시스템 추가 ---
 st.markdown("---")

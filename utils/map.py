@@ -1,14 +1,15 @@
 import folium
 import pandas as pd
 
-def create_map(dataframe):
+def create_map(dataframe, center=None, zoom=None):
     if dataframe.empty or dataframe['위도'].isnull().all() or dataframe['경도'].isnull().all():
-        # 기본 지도 (수원시청 중심 좌표 사용)
         m = folium.Map(location=[37.2636, 127.0286], zoom_start=12)
         return m
 
-    map_center = [dataframe['위도'].mean(), dataframe['경도'].mean()]
-    m = folium.Map(location=map_center, zoom_start=13)
+    map_center = center if center else [dataframe['위도'].mean(), dataframe['경도'].mean()]
+    map_zoom = zoom if zoom else 13
+
+    m = folium.Map(location=map_center, zoom_start=map_zoom)
 
     for _, row in dataframe.iterrows():
         address = row['도로명주소'] if pd.notnull(row['도로명주소']) else row['지번주소']
