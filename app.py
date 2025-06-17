@@ -3,7 +3,7 @@ from streamlit_folium import st_folium
 from utils.data_loader import load_data
 from utils.map import create_map
 from utils.distance import *
-from utils.model import RestaurantRecommender  # 순수 벡터 DB 모델 import
+from utils.model import RestaurantRecommender
 
 # 데이터 로드 및 추천 시스템 초기화
 @st.cache_resource
@@ -106,7 +106,7 @@ with st.expander("💡 음식점 추천받기", expanded=True):
                 else:
                     st.warning("추천 결과를 찾지 못했습니다. 다른 조건으로 시도해보세요.")
 
-# 추천 히스토리 (세션 상태 활용)
+# 추천 기록 히스토리
 if 'recommendation_history' not in st.session_state:
     st.session_state.recommendation_history = []
 
@@ -118,7 +118,7 @@ if st.session_state.recommendation_history:
             st.markdown(result[:200] + "..." if len(result) > 200 else result)
             st.markdown("---")
 
-# 거리 측정 UI (주소 입력만 사용)
+# 거리 측정 UI
 st.markdown("---")
 with st.sidebar.expander("📏 거리 계산", expanded=False):
     st.markdown("**주소 기반 거리 계산**")
