@@ -7,7 +7,7 @@ from utils.model import RestaurantRecommender
 
 # 데이터 로드 및 추천 시스템 초기화
 @st.cache_resource
-def initialize_recommendation_system(csv_path = "'datas/merged_data.csv'"):
+def initialize_recommendation_system(csv_path = "datas/merged_data.csv"):
     """추천 시스템 초기화 (캐시 적용)"""
     return RestaurantRecommender(csv_path)
 
