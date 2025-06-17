@@ -9,7 +9,7 @@ from utils.model import RestaurantRecommender
 @st.cache_resource
 def initialize_recommendation_system():
     """추천 시스템 초기화 (캐시 적용)"""
-    return RestaurantRecommender("./datas/merged_data.csv")
+    return RestaurantRecommender()
 
 df = load_data()
 recommender = initialize_recommendation_system()
