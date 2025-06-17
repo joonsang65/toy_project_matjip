@@ -12,7 +12,7 @@ def initialize_recommendation_system():
     return RestaurantRecommender()
 
 df = load_data()
-recommender = initialize_recommendation_system()
+recommender = initialize_recommendation_system("datas/merged_data.csv")
 
 st.title("📍 수원시 착한가격업소 & 모범음식점 지도")
 
