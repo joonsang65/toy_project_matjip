@@ -4,4 +4,4 @@ myvenv/
 *.log
 .vscode/
 .idea/
-.dockerignore/
+.dockerignore
