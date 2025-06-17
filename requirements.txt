@@ -1,10 +1,10 @@
-sentence-transformers
-transformers
+sentence-transformers>=2.7.0
+transformers>=4.39.0
 faiss-cpu
-langchain
-langchain-community
+langchain==0.1.17
+langchain-community==0.0.36
 pandas==2.2.2
 streamlit==1.35.0
-streamlit-folium==0.14.0
-folium==0.14.0
+streamlit-folium==0.18.0
+folium==0.16.0
 geopy==2.4.1
